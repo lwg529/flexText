@@ -1,33 +1,47 @@
 <!doctype html>
-<html lang="en-gb">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container{
+            position: relative;
+        } 
+        .content{
+            position:absolute;
+            top:0;
+            left:0;
+            height:100%;
+            background: transparent;
+            outline:0;
+            font-size: inherit;
+            color: inherit;
+            line-height: inherit;
+            text-indent: inherit;
+            letter-spacing: inherit;
+            resize:none;
+            overflow:hidden;
+        }  
+        .container pre {
+            display:block;
+            visibility:hidden;
+        }
 
-    <title>Flexible, auto-height textarea</title>
-
-    <!-- Application styles -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    </style>
 </head>
 <body>
-    <a class="fork-link" href="https://github.com/alexdunphy/flexText">
-        <img src="./assets/img/fork-me@2x.png" alt="Fork on Github" title="Fork on Github" />
-    </a>
-
-    <div class="wrap">
-        <h1>Flexible, auto-height textarea</h1>
-
-        <textarea id="content" placeholder="Type/paste/shout content&hellip;"></textarea>
-
-        <small>Once the content stretches beyond the set min-height, the textarea will get its expansion on. Boom.<br />Get the <a href="https://github.com/alexdunphy/flexText">source on Github</a>.</small>
+    <div class="body">
+        <div class="container">
+        <pre class="pre"><span /><br /><br /></pre>
+        <textarea class="content" placeholder="请输入内容" oninput="changeContent()"></textarea>
+        </div>
     </div>
-
-    <script src="./assets/js/jquery.js"></script>
-    <script src="./../jquery.flexText.js"></script>
     <script>
-        $(function () {
-            $('#content').flexText();
-        });
+        function changeContent(){
+            var $textarea = document.getElementsByClassName('content');
+            var $pre = document.getElementsByClassName('pre');
+            $pre[0].innerHTML = $textarea[0].value;
+        }  
     </script>
 </body>
 </html>
